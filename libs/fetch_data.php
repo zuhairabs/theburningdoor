@@ -1,4 +1,5 @@
 <?php 
+
 function gettagline($table){
 	require("database/db_connect.php");
 	$sql="SELECT * FROM $table ";
@@ -20,8 +21,11 @@ function gettagline($table){
 
 	mysqli_close($con);
 }
+
 function geticon($table){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -43,6 +47,8 @@ function geticon($table){
 }
 function getjavascripts($table){
 require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -64,6 +70,8 @@ require("database/db_connect.php");
 }
 function getsharingscript($table){
 require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -85,6 +93,8 @@ require("database/db_connect.php");
 }
 function getcommentsscript($table){
 require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -106,6 +116,8 @@ require("database/db_connect.php");
 }
 function getshortdescription($table){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -127,6 +139,8 @@ function getshortdescription($table){
 }
 function getcontacts($table,$num){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -164,6 +178,8 @@ function getcontacts($table,$num){
 }
 function getdetaileddescription($table){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -185,6 +201,8 @@ function getdetaileddescription($table){
 }
 function countcategories(){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM blog_categories LIMIT 10";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -206,10 +224,14 @@ function countcategories(){
 				$getcatcount=$rowcountcategory;
 			}
 					# code...show data
-			echo '<a href="./category.php?id='.$categoryid.'" style="color:unset"><li class="list-group-item d-flex justify-content-between align-items-center">
+			echo '
+			<li>
+			<a href="./category.php?id='.$categoryid.'" class="categorie">
 			'.$categorydata['name'].'
-			<span class="badge badge-success badge-pill">'.$rowcountcategory.'</span>
-			</li></a>';
+			</a>
+			<span class="ml-auto">'.$rowcountcategory.'
+			</span>
+			</li>';
 		}
 	}
 
@@ -217,6 +239,8 @@ function countcategories(){
 }
 function getbannertext($table,$position){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -246,13 +270,19 @@ function getbannertext($table,$position){
 					# code...
 				echo ''.$bannertext['bannertext4'].'';
 			}
-		}
+			elseif ($position==5) {
+
+					# code...
+				echo ''.$bannertext['bannertext5'].'';
+			}		}
 	}
 
 	mysqli_close($con);
 }
 function getwebname($table){
 	require("database/db_connect.php");
+	
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -274,6 +304,8 @@ function getwebname($table){
 }
 function getkeywords($table){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -295,6 +327,8 @@ function getkeywords($table){
 }
 function getlinks($table,$platform){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -337,6 +371,8 @@ function getlinks($table,$platform){
 function getcategoriesmenu($table)
 {
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -350,8 +386,10 @@ function getcategoriesmenu($table)
       	//if there are rows available display all the results
 		foreach ($result as $blog_categories => $category) {
       	# code...
-			echo '<a class="dropdown-item" href="category.php?id='.$category['id'].'">'.$category['name'].'</a>
-			<div class="dropdown-divider"></div>';
+			echo '
+			<li>
+			<a class="dropdown-item" href="category.php?id='.$category['id'].'">'.$category['name'].'</a>
+			</li>';
 		}
 	}
 
@@ -359,6 +397,8 @@ function getcategoriesmenu($table)
 }
 function getbottomsliderposts($table){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table WHERE posted='publish' ORDER BY id DESC LIMIT 3";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -405,6 +445,8 @@ function getbottomsliderposts($table){
 }
 function getblogridposts($table){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table WHERE posted='publish' ORDER BY id DESC LIMIT 8";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -418,33 +460,43 @@ function getblogridposts($table){
       	//if there are rows available display all the results
 		foreach ($result as $bloggrid => $griditem) {
       	# code...
-			echo '<div class="col-md-6 blog-grid-top">
-			<div class="b-grid-top">
-			<div class="blog_info_left_grid">
-			<a href="single.php?id='.$griditem['id'].'">
-			<img src="blogadmin/images/'.$griditem['photo'].'" class="img-fluid" alt="fantastic cms" style="width:350px;height:250px">
-			</a>
-			</div>
-			<h3>
-			<a href="single.php?id='.$griditem['id'].'">'.$griditem['title'].'</a>
-			</h3>
-			</div>
-			<ul class="blog-icons">
-			<li>
-			<a href="#">
-			<i class="far fa-clock"></i>'.$griditem['date'].'</a>
-			</li>
-			<li class="mx-2">
-			<a href="#">
-			<i class="far fa-user"></i> '.$griditem['author'].'</a>
-			</li>
-			<li>
-			<a href="#">
-			<i class="fas fa-tags"></i>'.$griditem['tags'].'</a>
-			</li>
+			echo '
+			<div class="col-lg-4 col-md-6">
+            <!-- Post -->
+            <div class="post-card">
+              <div class="post-card-image">
+                <a href="single.php?id='.$griditem['id'].'">
+                  <img width="1200" height="900" src="blogadmin/images/'.$griditem['photo'].'" alt="">
+                </a>
+              </div>
+              <div class="post-card-content">
+                <a href="#" class="categorie">'.$griditem['tags'].'</a>
+                <h5>
+                  <a href="single.php?id='.$griditem['id'].'">'.$griditem['title'].'</a>
+                </h5>
+                <p>
+                  This website is dedicated in promoting the tragic incident of "The Burning Door" of Sayyidah Zahra (sa) and Unmasking the Early Terrorist of Islam...
+                </p>
 
-			</ul>
-			</div>';
+                <div class="post-card-info">
+                  <ul class="list-inline">
+                    <li>
+                      <a href="#">
+                        <img src="assets/img/profile.png" alt="">
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">'.$griditem['author'].'</a>
+                    </li>
+                    <li class="dot"></li>
+                    <li>'.$griditem['date'].'</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!--/-->
+          </div>
+			';
 		}
 	}
 
@@ -453,6 +505,8 @@ function getblogridposts($table){
 }
 function getolderposts($table){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table WHERE posted='publish' ORDER BY id ASC LIMIT 8";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -466,24 +520,22 @@ function getolderposts($table){
       	//if there are rows available display all the results
 		foreach ($result as $olderposts => $op) {
       	# code...
-			echo '<div class="blog-grids row mb-3">
-			<div class="col-md-5 blog-grid-left">
-			<a href="single.php?id='.$op['id'].'">
-			<img src="blogadmin/images/'.$op['photo'].'" class="img-fluid" alt="fantastic cms">
-			</a>
-			</div>
-			<div class="col-md-7 blog-grid-right">
-
-			<h5>
-			<a href="single.php?id='.$op['id'].'">'.$op['title'].'</a>
-			</h5>
-			<div class="sub-meta">
-			<span>
-			<i class="far fa-clock"></i> '.$op['date'].'</span>
-			</div>
-			</div>
-
-			</div>';
+			echo '<li class="last-post">
+              <div class="image">
+                <a href="single.php?id='.$op['id'].'">
+                  <img src="blogadmin/images/'.$op['photo'].'" alt="...">
+                </a>
+              </div>
+              <div class="nb">
+                '.$op['id'].'
+              </div>
+              <div class="content">
+                <p>
+                  <a href="single.php?id='.$op['id'].'">'.$op['title'].'</a>
+                </p>
+                <small><span class="icon_clock_alt"></span> '.$op['date'].'</small>
+              </div>
+            </li>';
 		}
 	}
 
@@ -491,6 +543,8 @@ function getolderposts($table){
 }
 function getfour($table){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ORDER BY id DESC LIMIT 4";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -504,19 +558,23 @@ function getfour($table){
       	//if there are rows available display all the results
 		foreach ($result as $thefour => $fourdata) {
       	# code...
-			echo '<li>
-			<a href="blogadmin/images/'.$fourdata['photo'].'">
-			<img src="blogadmin/images/'.$fourdata['photo'].'" alt="fantastic cms" data-desoslide-caption="<h3>Latest Post '.$fourdata['id'].'</h3>">
-			<div class="mid-text-info">
-			<h4 style="height:40px;overflow:hidden;text-overflow:ellipsis">'.$fourdata['title'].'</h4>
-			<p>'.$fourdata['author'].'</p>
-			<div class="sub-meta">
-			<span>
-			<i class="far fa-clock"></i> '.$fourdata['date'].'</span>
-			</div>
-			</div>
-			</a>
-			</li>';
+			echo '<li class="last-post">
+              <div class="image">
+                <a href="single.php?id='.$fourdata['id'].'">
+                  <img src="blogadmin/images/'.$fourdata['photo'].'" alt="...">
+                </a>
+              </div>
+              <div class="nb">
+                '.$fourdata['id'].'
+              </div>
+              <div class="content">
+                <p>
+                  <a href="single.php?id='.$fourdata['id'].'">'.$fourdata['title'].'</a>
+                </p>
+                <small><span class="icon_clock_alt"></span> '.$fourdata['date'].'</small>
+              </div>
+            </li>
+            ';
 		}
 	}
 
@@ -524,6 +582,8 @@ function getfour($table){
 }
 function getonelatest($table){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ORDER BY id DESC LIMIT 1";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -537,37 +597,44 @@ function getonelatest($table){
       	//if there are rows available display all the results
 		foreach ($result as $onelatest => $onedata) {
       	# code...
-			echo '<div class="blog-grid-top">
-			<div class="b-grid-top">
-			<div class="blog_info_left_grid">
-			<a href="single.php?id='.$onedata['id'].'">
-			<img src="blogadmin/images/'.$onedata['photo'].'" class="img-fluid" alt="fantastic cms" style="width:900px;height:500px">
-			</a>
-			</div>
-			<div class="blog-info-middle">
-			<ul>
-			<li>
-			<a href="#">
-			<i class="far fa-calendar-alt"></i> '.$onedata['date'].'</a>
-			</li>
-			<li class="mx-2">
-			<a href="#">
-			<i class="far fa-check"></i> '.$onedata['tags'].'</a>
-			</li>
-			<li>
-			<a href="#">
-			<i class="far fa-user"></i> '.$onedata['author'].'</a>
-			</li>
+			echo '
+			<div class="mt-3 col-lg-6 col-md-6">
+            <!-- Post -->
+            <div class="post-card">
+              <div class="post-card-image">
+                <a href="single.php?id='.$onedata['id'].'">
+                  <img width="1200" height="900" src="blogadmin/images/'.$onedata['photo'].'" alt="">
+                </a>
+              </div>
+              <div class="post-card-content">
+                <a href="#" class="categorie">'.$onedata['tags'].'</a>
+                <h5>
+                  <a href="single.php?id='.$onedata['id'].'">'.$onedata['title'].'</a>
+                </h5>
+                <p>
+                  This website is dedicated in promoting the tragic incident of "The Burning Door" of Sayyidah Zahra (sa) and Unmasking the Early Terrorist of Islam...
+                </p>
 
-			</ul>
-			</div>
-			</div>
-
-			<h3>
-			<a href="single.php?id='.$onedata['id'].'">'.$onedata['title'].'</a>
-			</h3>
-			<a href="single.php?id='.$onedata['id'].'" class="btn btn-primary read-m">Read More</a>
-			</div>';
+                <div class="post-card-info">
+                  <ul class="list-inline">
+                    <li>
+                      <a href="#">
+                        <img width="200" height="200" src="assets/img/profile.png" alt="">
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">'.$onedata['author'].'</a>
+                    </li>
+                    <li class="dot"></li>
+                    <li>'.$onedata['date'].'</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!--/-->
+          </div>
+          </div>
+          ';
 		}
 	}
 
@@ -575,6 +642,8 @@ function getonelatest($table){
 }
 function geteditorschoice($table){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table ORDER BY id DESC LIMIT 8";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -594,24 +663,24 @@ function geteditorschoice($table){
 				# code...
 				foreach ($result as $posts => $postdata) {
 					# code...display actual posts
-					echo '<div class="blog-grids row mb-3">
-								<div class="col-md-5 blog-grid-left">
-									<a href="single.php?id='.$postdata['id'].'">
-										<img src="blogadmin/images/'.$postdata['photo'].'" class="img-fluid" alt="fantastic cms">
-									</a>
-								</div>
-								<div class="col-md-7 blog-grid-right">
-
-									<h5>
-										<a href="single.php?id='.$postdata['id'].'"> '.$postdata['title'].'</a>
-									</h5>
-									<div class="sub-meta">
-										<span>
-											<i class="far fa-clock"></i> '.$postdata['date'].'</span>
-									</div>
-								</div>
-								
-							</div>';
+					echo '
+					<li class="last-post">
+              <div class="image">
+                <a href="single.php?id='.$postdata['id'].'">
+                  <img src="blogadmin/images/'.$postdata['photo'].'" alt="...">
+                </a>
+              </div>
+              <div class="nb">
+                '.$postdata['id'].'
+              </div>
+              <div class="content">
+                <p>
+                  <a href="single.php?id='.$postdata['id'].'">'.$postdata['title'].'</a>
+                </p>
+                <small><span class="icon_clock_alt"></span> '.$postdata['date'].'</small>
+              </div>
+            </li>
+            ';
 				}
 			}
       	# code...
@@ -622,6 +691,8 @@ function geteditorschoice($table){
 }
 function getcategoryblogs($table,$id){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	$sql="SELECT * FROM $table WHERE category='$id' ORDER BY id DESC LIMIT 10";
 	if ($result=mysqli_query($con,$sql))
 	{
@@ -630,37 +701,57 @@ function getcategoryblogs($table,$id){
       	//if no rows returned show no news alert
 		if ($rowcount==0) {
       		# code...
-			echo 'No Blogs To Fetch';
+			echo '			                        <div class="col-lg-12 col-md-8">
+                            <!-- Post -->
+                            <div class="post-card">
+                                <div class="post-card-content">
+                                    <h5>
+No Blogs Found
+                                    </h5>
+                                    <p>Go Back <a href="index.php">Home</a></p>
+                                </div>
+                            </div>
+                            <!--/-->
+                        </div>
+                        ';
 		}
       	//if there are rows available display all the results
 		foreach ($result as $categories => $cdata) {
       	# code...
-			echo '<div class="col-md-6 card">
-							<a href="single.php?id='.$cdata['id'].'">
-								<img src="blogadmin/images/'.$cdata['photo'].'" class="card-img-top img-fluid" alt="fantastic cms" style="width:480px;height:300px">
-							</a>
-							<div class="card-body">
-								<ul class="blog-icons my-4">
-									<li>
-										<a href="#">
-											<i class="far fa-calendar-alt"></i> '.$cdata['date'].'</a>
-									</li>
-									<li class="mx-2">
-										<a href="#">
-											<i class="far fa-user"></i> '.$cdata['author'].'</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fas fa-tags"></i> '.$cdata['tags'].'</a>
-									</li>
-
-								</ul>
-								<h5 class="card-title ">
-									<a href="single.php?id='.$cdata['id'].'">'.$cdata['title'].'</a>
-								</h5>
-								<a href="single.php?id='.$cdata['id'].'" class="btn btn-primary read-m">Read More</a>
-							</div>
-						</div>';
+			echo '
+			                        <div class="col-lg-6 col-md-6">
+                            <!-- Post -->
+                            <div class="post-card">
+                                <div class="post-card-image">
+                                    <a href="single.php?id='.$cdata['id'].'">
+                                        <img width="1200" height="900" src="blogadmin/images/'.$cdata['photo'].'" alt="">
+                                    </a>
+                                </div>
+                                <div class="post-card-content">
+                                    <a href="#" class="categorie">'.$cdata['tags'].'</a>
+                                    <h5>
+                                        <a href="single.php?id='.$cdata['id'].'">'.$cdata['title'].'</a>
+                                    </h5>
+                                    <p>This website is dedicated in promoting the tragic incident of "The Burning Door" of Sayyidah Zahra (sa) and Unmasking the Early Terrorist of Islam...</p>
+                                    <div class="post-card-info">
+                                        <ul class="list-inline">
+                                            <li>
+                                                <a href="#">
+                                                    <img src="assets/img/profile.png" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">'.$cdata['author'].'</a>
+                                            </li>
+                                            <li class="dot"></li>
+                                            <li>'.$cdata['date'].'</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/-->
+                        </div>
+                        ';
 		}
 	}
 
@@ -668,6 +759,8 @@ function getcategoryblogs($table,$id){
 }
 function getpopularposts($table){
 	require("database/db_connect.php");
+
+mysqli_set_charset($con,"utf8");
 	#get most viewed 3 pages from pagehits
 	$sql="SELECT * FROM $table ORDER BY count DESC LIMIT 3";
 	if ($result=mysqli_query($con,$sql))
@@ -688,24 +781,24 @@ function getpopularposts($table){
 				# code...
 				foreach ($result as $allblogs => $specificblog) {
 					# code...display the results
-					echo '<div class="blog-grids row mb-3">
-							<div class="col-md-5 blog-grid-left">
-								<a href="single.php?id='.$specificblog['id'].'">
-									<img src="blogadmin/images/'.$specificblog['photo'].'" class="img-fluid" alt="fantastic cms">
-								</a>
-							</div>
-							<div class="col-md-7 blog-grid-right">
-
-								<h5>
-									<a href="single.php?id='.$specificblog['id'].'">'.$specificblog['title'].' </a>
-								</h5>
-								<div class="sub-meta">
-									<span>
-										<i class="far fa-clock"></i> '.$specificblog['date'].'</span>
-								</div>
-							</div>
-							
-						</div>';
+					echo '
+<li style="margin-top:40px" class="ml-lg-4 last-post">
+              <div class="image">
+                <a href="single.php?id='.$specificblog['id'].'">
+                  <img src="blogadmin/images/'.$specificblog['photo'].'" alt="...">
+                </a>
+              </div>
+              <div class="nb">
+                '.$specificblog['id'].'
+              </div>
+              <div class="content">
+                <p>
+                  <a href="single.php?id='.$specificblog['id'].'">'.$specificblog['title'].'</a>
+                </p>
+                <small><span class="icon_clock_alt"></span> '.$specificblog['date'].'</small>
+              </div>
+            </li>
+            ';
 				}
 			}
 		}

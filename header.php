@@ -1,96 +1,89 @@
-<!--Header-->
-<header>
-		<div class="top-bar_sub_w3layouts container-fluid">
-			<div class="row">
-				<div class="col-md-4 logo text-left">
-					<a class="navbar-brand" href="index.php">
-<img width="200px" height="130px" src="images/logo.png"></a>
-				</div>
-				<div class="col-md-4 top-forms text-center mt-lg-3 mt-md-1 mt-0">
-					<span>Welcome Back!</span>
-					<span class="mx-lg-4 mx-md-2  mx-1">
-						<a href="blogadmin/index.php">
-							<i class="fas fa-lock"></i> <strong>Sign In</strong></a>
-					</span>
-					<span>
-						<a href="blogadmin/membership_signup.php">
-							<i class="far fa-user"></i> <strong>Register</strong></a>
-					</span>
-				</div>
-				<div class="col-md-4 log-icons text-right">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <!--logo-->
+            <div class="logo">
+                <a href="index.html">
+                    <img width="150px" src="assets/img/logo.png" alt="" class="logo-dark">
+                    <img width="150px" src="assets/img/logo.png" alt="" class="logo-white">
+                </a>
+            </div>
+            <!--/-->
+    
+            <!--navbar-collapse-->
+            <div class="collapse navbar-collapse" id="main_nav">
+                <ul class="navbar-nav ml-auto mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active" href="index.php"> Home </a>
+                    </li>
+                    <li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown"> Category </a>
+<ul class="dropdown-menu fade-up">
+<?php getcategoriesmenu("blog_categories"); ?>
+                        </ul>
+                    </li>
+                        <li class="nav-item"><a class="nav-link" href="about.php"> About </a>
+                    </li>
+                    
 
-					<ul class="social_list1 mt-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php"> Contact </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contribute.php"> Contribute </a>
+                    </li>
+                    
+<li class="nav-item dropdown"><a class="mb-4 nav-link  dropdown-toggle" href="#" data-toggle="dropdown"> Membership </a>
+<ul class="dropdown-menu fade-up">
+<li><a class="dropdown-item" href="blogadmin/membership_signup.php"> Sign Up</a></li>
 
-						<li>
-							<a href="<?php getlinks("links","facebook");?>" class="facebook1 mx-2" >
-								<i class="fab fa-facebook-f"></i>
-
-							</a>
-						</li>
-						<li>
-							<a href="<?php getlinks("links","twitter");?>" class="twitter2">
-								<i class="fab fa-twitter"></i>
-
-							</a>
-						</li>
-						<li>
-							<a href="<?php getlinks("links","dribble");?>" class="dribble3 mx-2">
-								<i class="fab fa-dribbble"></i>
-							</a>
-						</li>
-						<li>
-							<a href="<?php getlinks("links","pinterest");?>" class="pin">
-								<i class="fab fa-pinterest-p"></i>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-			<div class="header_top" id="home">
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-					<button class="navbar-toggler navbar-toggler-right mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-						aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-				   </button>
-
-
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav mr-auto">
-							<li class="nav-item active">
-								<a class="nav-link" href="index.php">Home
-									<span class="sr-only">(current)</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="about.php">About</a>
-							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-								    aria-expanded="false">
-									Categories
-								</a>
-								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="#"></a>
-									<?php getcategoriesmenu("blog_categories"); ?>
-								</div>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="contact.php">Contact</a>
-							</li>
-
-						</ul>
-							<form action="search.php" method="post" class="form-inline my-2 my-lg-0 header-search" name="form">
-								<input class="form-control mr-sm-2" type="search" placeholder="Search here..." required="yes" type="text" name="search[keyword]">
-								<button class="btn btn1 my-2 my-sm-0" type="submit" name="submit"><i class="fas fa-search"></i></button>
-							</form>
-		
-						
-
-					</div>
-				</nav>
-
-			</div>
-	</header>
-	<!--//header-->
+<li><a class="dropdown-item" href="blogadmin/index.php"> Login </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--/-->
+    
+            <!--navbar-right-->
+            <div class="navbar-right ml-auto">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <div class="social-icones">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="<?php getlinks("links","facebook");?>">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php getlinks("links","dribble");?>">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php getlinks("links","twitter");?>">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php getlinks("links","pinterest");?>">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <div class="search-icon">
+                    <i class="icon_search"></i>
+                </div>
+    
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!--/-->
